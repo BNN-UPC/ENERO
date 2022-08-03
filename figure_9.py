@@ -77,7 +77,7 @@ if __name__ == "__main__":
     if not os.path.exists(path_to_dir):
         os.makedirs(path_to_dir)
 
-    aux_path_to_DEFO_results = "../DEFOResults/results-1-link_capacity-unif-05-1-zoo/"
+    aux_path_to_DEFO_results = "../Enero_datasets/DEFOResults/results-1-link_capacity-unif-05-1-zoo/"
 
     axis_counter = 0
     # Iterate over all topologies and evaluate our DRL agent on all TMs

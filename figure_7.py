@@ -23,11 +23,11 @@ if __name__ == "__main__":
     # Figure 7 from COMNET 2022 paper.
     
     # Before executing this file we must execute the eval_on_single_topology.py file to evaluate the DRL model and store the results
-    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
-    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
-    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
+    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
+    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
+    # python figure_TMs_timers.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
     # Then, we execute the script like:
-    # python figure_7.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
+    # python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
     parser = argparse.ArgumentParser(description='Parse files and create plots')
 
     # The flag 'p' points to the folder where the .pckl files are found

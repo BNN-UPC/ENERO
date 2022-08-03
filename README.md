@@ -9,7 +9,7 @@ Wide Area Networks (WAN) are a key infrastructure in today’s society. During t
 
 In this paper we propose Enero, an efficient real-time TE solution based on a two-stage optimization process. In the first one, Enero leverages Deep Reinforcement Learning (DRL) to optimize the routing configuration by generating a long-term TE strategy. To enable efficient operation over dynamic network scenarios (e.g., when link failures occur), we integrated a Graph Neural Network into the DRL agent. In the second stage, Enero uses a Local Search algorithm to improve DRL’s solution without adding computational overhead to the optimization process. The experimental results indicate that Enero is able to operate in real-world dynamic network topologies in 4.5 s on average for topologies up to 100 links.
 
-# Instructions to set up the Environment
+## Instructions to set up the Environment
 
 1. First, create the virtual environment and activate the environment.
 ```ruby
@@ -27,22 +27,17 @@ pip install -r requirements.txt
 pip install -e gym-graph/
 ```
 
-# Instructions to prepare the datasets
+## Instructions to prepare the datasets
 
-The source code already provides the data and the trained model used in the paper. Therefore, we can start by evaluating the model executing the following script. However, the following steps can be used to prepare the data to train on other topologies.
+The source code already provides the data, the results and the trained model used in the paper. Therefore, we can start by using the datasets provided to obtain the figures used in the paper.
 
-1. Download the dataset from https://drive.google.com/file/d/1HQyRxj8F2J8ScQxeEvSvUV_RuVtehCBh/view?usp=sharing and unzip it. Then, copy the directory "results_zoo" to a new directory called "results-1-link_capacity-unif-05-1-zoo" located one level outside of this code's directory (i.e., do "cd .." in the terminal).
+1. Download the [dataset](https://drive.google.com/file/d/1gem-VQ5MY3L54B77XUYt-rTbemyKmaqs/view?usp=sharing) and unzip it. The location should be immediatly outside of the dir where Enero's code. 
 
-2. Copy the topology datasets from "results-1-link_capacity-unif-05-1-zoo" to "./ENERO/dataset/data/my_training_topologies/". In the paper, we copy the "EliBackbone", "Janetbackbone" and "HurricaneElectric" datasets.
+2. Then, enter in the unziped "Enero_datasets" directory and unzip everything.
 
-3. Execute the following command to split the data between training and evaluation.
-```ruby
-python convert_dataset_Albert.py -d my_training_topologies -name Aarnet
-```
+## Instructions to obtain the Figures from the paper
 
-# Instructions to obtain the Figures from the paper
-
-1. First we unzip the "dataset_sing_top.zip" in "../", which is one directory level outside of where this readme is located. Then, we execute the following command:
+1. First, we execute the following command:
 
 ```ruby
 python figures_5_and_6.py -d SP_3top_15_B_NEW 
@@ -50,26 +45,25 @@ python figures_5_and_6.py -d SP_3top_15_B_NEW
 
 2. Then, we execute the following (one per topology):
 ```ruby
-python figure_7.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
 ```
 
 3. Next, we generate the link failure Figures (one per topology):
 ```ruby
-python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../dataset_sing_top/LinkFailure/rwds-LinkFailure_HurricaneElectric
+python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../Enero_datasets/dataset_sing_top/LinkFailure/rwds-LinkFailure_HurricaneElectric
 
-python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../dataset_sing_top/LinkFailure/rwds-LinkFailure_Janetbackbone
+python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../Enero_datasets/dataset_sing_top/LinkFailure/rwds-LinkFailure_Janetbackbone
 
-python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../dataset_sing_top/LinkFailure/rwds-LinkFailure_EliBackbone
+python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../Enero_datasets/dataset_sing_top/LinkFailure/rwds-LinkFailure_EliBackbone
 ```
 
-4. Finally, we generate the generalization figure. For this figure, we need to unzip "DEFOResults.zip" and "rwds-results-1-link_capacity-unif-05-1-zoo.zip" in "../", which is one directory level outside.
-
+4. Finally, we generate the generalization figure
 ```ruby
-python figure_9.py -d SP_3top_15_B_NEW -p ../rwds-results-1-link_capacity-unif-05-1-zoo
+python figure_9.py -d SP_3top_15_B_NEW -p ../Enero_datasets/rwds-results-1-link_capacity-unif-05-1-zoo
 ```
 
 
