@@ -4,6 +4,13 @@
 
 #### Paul Almasan, Shihan Xiao, Xiangle Cheng, Xiang Shi, Pere Barlet-Ros, Albert Cabellos-Aparicio
 
+Contact: <felician.paul.almasan@upc.edu>
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/PaulAlmasan?style=social)](https://twitter.com/PaulAlmasan)
+[![GitHub watchers](https://img.shields.io/github/watchers/BNN-UPC/ENERO?style=social&label=Watch)](https://github.com/BNN-UPC/ENERO)
+[![GitHub forks](https://img.shields.io/github/forks/BNN-UPC/ENERO?style=social&label=Fork)](https://github.com/BNN-UPC/ENERO)
+[![GitHub stars](https://img.shields.io/github/stars/BNN-UPC/ENERO?style=social&label=Star)](https://github.com/BNN-UPC/ENERO)
+
 ## Abstract
 Wide Area Networks (WAN) are a key infrastructure in today’s society. During the last years, WANs have seen a considerable increase in network’s traffic and network applications, imposing new requirements on existing network technologies (e.g., low latency and high throughput). Consequently, Internet Service Providers (ISP) are under pressure to ensure the customer’s Quality of Service and fulfill Service Level Agreements. Network operators leverage Traffic Engineering (TE) techniques to efficiently manage the network’s resources. However, WAN’s traffic can drastically change during time and the connectivity can be affected due to external factors (e.g., link failures). Therefore, TE solutions must be able to adapt to dynamic scenarios in real-time.
 
