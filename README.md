@@ -10,6 +10,7 @@ Wide Area Networks (WAN) are a key infrastructure in today’s society. During t
 In this paper we propose Enero, an efficient real-time TE solution based on a two-stage optimization process. In the first one, Enero leverages Deep Reinforcement Learning (DRL) to optimize the routing configuration by generating a long-term TE strategy. To enable efficient operation over dynamic network scenarios (e.g., when link failures occur), we integrated a Graph Neural Network into the DRL agent. In the second stage, Enero uses a Local Search algorithm to improve DRL’s solution without adding computational overhead to the optimization process. The experimental results indicate that Enero is able to operate in real-world dynamic network topologies in 4.5 s on average for topologies up to 100 links.
 
 ## Instructions to set up the Environment
+This paper implements the PPO algorithm to train a DRL agent that learns to route src-dst traffic demands using middelpoint routing. 
 
 1. First, create the virtual environment and activate the environment.
 ```ruby
@@ -31,7 +32,7 @@ pip install -e gym-graph/
 
 The source code already provides the data, the results and the trained model used in the paper. Therefore, we can start by using the datasets provided to obtain the figures used in the paper.
 
-1. Download the [dataset](https://drive.google.com/file/d/1gem-VQ5MY3L54B77XUYt-rTbemyKmaqs/view?usp=sharing) and unzip it. The location should be immediatly outside of the dir where Enero's code. 
+1. Download the [dataset](https://drive.google.com/file/d/1gem-VQ5MY3L54B77XUYt-rTbemyKmaqs/view?usp=sharing) and unzip it. The location should be immediatly outside of Enero's code directory. 
 
 2. Then, enter in the unziped "Enero_datasets" directory and unzip everything.
 
@@ -66,6 +67,18 @@ python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../Enero_datasets/d
 python figure_9.py -d SP_3top_15_B_NEW -p ../Enero_datasets/rwds-results-1-link_capacity-unif-05-1-zoo
 ```
 
+## Instructions to TRAIN
+
+1. To trail the DRL agent we must execute the following command. Notice that inside the *train_Enero_15demands_3top_script.py* there are different hyperparameters that you can configure to set the training for different topologies, to define the size of the GNN model, etc. Then, we execute the following script which executes the actual training script periodically. 
+
+```ruby
+python train_Enero_15demands_3top.py
+```
+
+2. Now that the training process is executing, we can see the DRL agent performance evolution by parsing the log files.
+```ruby
+python parse_PPO.py -d ./Logs/expEnero_3top_15_B_NEWLogs.txt
+```
 
 Please cite the corresponding article if you use the code from this repository:
 
