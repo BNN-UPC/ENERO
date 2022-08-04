@@ -28,7 +28,8 @@ def frange(x, y, jump):
     yield x
     x += jump
 
-folders = ["../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/"]
+#folders = ["../Enero_datasets/dataset_sing_top/data/results_single_top/evalRes_NEW_Garr199905/EVALUATE/"]
+folders = ["../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_EliBackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_Janetbackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_HurricaneElectric/EVALUATE/"]
 
 if __name__ == "__main__":
     # This script is to plot the Figures 5 and 6 from COMNET 2022 paper.
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     # Iterate over all topologies and evaluate our DRL agent on all TMs
     for folder in folders:
         drl_eval_res_folder = folder+differentiation_str+'/'
-        topology_eval_name = folder.split('_')[5].split('/')[0]
+        topology_eval_name = folder.split('NEW_')[1].split('/')[0]
         for subdir, dirs, files in os.walk(drl_eval_res_folder):
             it = 0
             for file in files:

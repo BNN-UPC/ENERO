@@ -46,11 +46,11 @@ python figures_5_and_6.py -d SP_3top_15_B_NEW
 
 2. Then, we execute the following (one per topology):
 ```ruby
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
 ```
 
 3. Next, we generate the link failure Figures (one per topology):
@@ -67,15 +67,65 @@ python figure_8.py -d SP_3top_15_B_NEW -num_topologies 20 -f ../Enero_datasets/d
 python figure_9.py -d SP_3top_15_B_NEW -p ../Enero_datasets/rwds-results-1-link_capacity-unif-05-1-zoo
 ```
 
-## Instructions to TRAIN
+## Instructions to EVALUATE
 
-1. To trail the DRL agent we must execute the following command. Notice that inside the *train_Enero_15demands_3top_script.py* there are different hyperparameters that you can configure to set the training for different topologies, to define the size of the GNN model, etc. Then, we execute the following script which executes the actual training script periodically. 
+To evaluate the model we should execute the following scripts. Each script should be executed independently for each topology where we want to evaluate the trained model. Notice that we should point to each topology were we want to evaluate with the flag -f2. In the paper, we evaluated on "NEW_EliBackbone", "NEW_Janetbackbone" and "NEW_HurricaneElectric".
 
+1. First of all, we need to split the original data from the desired topology between training and evaluation. To do this, we should choose from "../Enero_datasets/results-1-link_capacity-unif-05-1/results_zoo/" one topology that we want to evaluate on. Lets say we choose the Garr199905 topology. Then, we need to execute:
 ```ruby
-python train_Enero_15demands_3top.py
+python convert_dataset.py -f1 results_single_top -name Garr199905
 ```
 
-2. Now that the training process is executing, we can see the DRL agent performance evolution by parsing the log files.
+2. Next, we proceed to evaluate the model. For example, let's say we want to evaluate the provided trained model on the Garr199905 topology. To do this we execute the followin script were we indicate with the flag '-d' to select the trained model, with the flag '-f1' we indicate the director (it has to be the same like in the previous command!) and with '-f2' we specify the topology.
+```ruby
+python eval_on_single_topology.py -max_edge 100 -min_edge 5 -max_nodes 30 -min_nodes 1 -n 2 -f1 results_single_top -f2 NEW_Garr199905/EVALUATE -d ./Logs/expSP_3top_15_B_NEWLogs.txt
+```
+
+3. Once we evaluated over the desired topologies, we can plot the boxplot (Figures 5 and 6 from the paper). Before doing this, we should edit the script and make the "folder" list contain only the desired folder with the results of the previous experiments. Specifically, we edited folders like:
+```ruby
+folders = ["../Enero_datasets/dataset_sing_top/data/results_single_top/evalRes_NEW_Garr199905/EVALUATE/"]
+```
+In addition, we also need to modify the script to plot the boxplots properly. Then, we can execute the following command. If we evaluated our model on different topologies, we should modify the script and make the "folders" list include the proper directories.
+
+```ruby
+python figures_5_and_6.py -d SP_3top_15_B_NEW 
+```
+
+4. We can obtain the Figure 7 from the paper executing the following script for each topology (i.e., "Garr199905").
+
+```ruby
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_single_top/evalRes_NEW_Garr199905/EVALUATE/ -t Garr199905
+```
+
+
+5. The next experiment would be the link failure scenario. To do this, we first need to generate the data with link failures. Specifically, we maintain the TMs but we remove links from the network.
+```ruby
+python3 generate_link_failure_topologies.py -d results-1-link_capacity-unif-05-1 -topology Garr199905 -num_topologies 1 -link_failures 1
+```
+
+6. Now we already have the new topologies with link failures. Next is to execute DEFO on the new topologies. To do this, we need to edit the script *run_Defo_all_Topologies.py* and make it point to the new generated dataset. Then, execute the following command and run DEFO. Notice that with the '--optimizer' flag we can indicate to run other optimizers implemented in [REPETITA](https://github.com/svissicchio/Repetita).
+
+```ruby
+python3 run_Defo_all_Topologies.py -max_edges 80 -min_edges 20 -max_nodes 25 -min_nodes 5 -optim_time 10 -n 15 --optimizer 100
+```
+
+7. The next step is to evaluate the DRL agent on the new topologies. The following script will create the directory "rwds-LinkFailure_Garr199905" which is then used to create the figures.
+
+```ruby
+python eval_on_link_failure_topologies.py -max_edge 100 -min_edge 2 -max_nodes 30 -min_nodes 1 -n 2 -d ./Logs/expSP_3top_15_B_NEWLogs.txt -f LinkFailure_Garr199905
+
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_single_top/evalRes_LinkFailure_Garr199905/EVALUATE/ -t Garr199905
+```
+
+## Instructions to TRAIN
+
+1. To trail the DRL agent we must execute the following command. Notice that inside the *train_Enero_3top_script.py* there are different hyperparameters that you can configure to set the training for different topologies, to define the size of the GNN model, etc. Then, we execute the following script which executes the actual training script periodically. 
+
+```ruby
+python train_Enero_3top.py
+```
+
+2. Now that the training process is executing, we can see the DRL agent performance evolution by parsing the log files from another terminal session. Notice that the following command should point to the proper Logs.
 ```ruby
 python parse_PPO.py -d ./Logs/expEnero_3top_15_B_NEWLogs.txt
 ```
