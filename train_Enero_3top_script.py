@@ -36,9 +36,9 @@ percentage_demands /= 100
 
 EVALUATION_EPISODES = 20 # As the demand selection is deterministic, it doesn't make sense to evaluate multiple times over the same TM
 PPO_EPOCHS = 8
-num_samples_top1 = int(np.ceil(percentage_demands*380))#*5
-num_samples_top2 = int(np.ceil(percentage_demands*506))#*4
-num_samples_top3 = int(np.ceil(percentage_demands*272))#*6
+num_samples_top1 = int(np.ceil(percentage_demands*380))*5
+num_samples_top2 = int(np.ceil(percentage_demands*506))*4
+num_samples_top3 = int(np.ceil(percentage_demands*272))*6
 
 BUFF_SIZE = num_samples_top1+num_samples_top2+num_samples_top3 # Experience buffer size. Careful to don't have more samples from one TM!
 
