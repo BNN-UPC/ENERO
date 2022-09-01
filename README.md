@@ -39,7 +39,7 @@ pip install -e gym-graph/
 
 The source code already provides the data, the results and the trained model used in the paper. Therefore, we can start by using the datasets provided to obtain the figures used in the paper.
 
-1. Download the [dataset](https://drive.google.com/file/d/1gem-VQ5MY3L54B77XUYt-rTbemyKmaqs/view?usp=sharing) and unzip it. The location should be immediatly outside of Enero's code directory. 
+1. Download the dataset from [here](https://drive.google.com/file/d/1gem-VQ5MY3L54B77XUYt-rTbemyKmaqs/view?usp=sharing) or [here](https://bnn.upc.edu/download/enero-dataset/) and unzip it. The location should be immediatly outside of Enero's code directory. 
 
 2. Then, enter in the unziped "Enero_datasets" directory and unzip everything.
 
