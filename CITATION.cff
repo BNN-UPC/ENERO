@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Almasan"
+  given-names: "Paul"
+  orcid: "https://orcid.org/0000-0003-3903-6759"
+title: "Enero code and datasets for routing optimization in IP networks"
+version: 1.0
+date-released: 2022-07-26
+url: "https://github.com/BNN-UPC/ENERO"
