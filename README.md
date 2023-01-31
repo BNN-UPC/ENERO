@@ -43,6 +43,8 @@ The source code already provides the data, the results and the trained model use
 
 2. Then, enter in the unziped "Enero_datasets" directory and unzip everything.
 
+![image](https://user-images.githubusercontent.com/87467979/215685300-de8c071d-c8f7-4ffa-be6a-c642f04a7d76.png)
+
 ## Instructions to obtain the Figures from the paper
 
 1. First, we execute the following command:
