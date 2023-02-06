@@ -46,11 +46,11 @@ python figures_5_and_6.py -d SP_3top_15_B_NEW
 
 2. Then, we execute the following (one per topology):
 ```ruby
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/ -t EliBackbone
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/ -t HurricaneElectric
 
-python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
+python figure_7.py -d SP_3top_15_B_NEW -p ../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/ -t Janetbackbone
 ```
 
 3. Next, we generate the link failure Figures (one per topology):
@@ -76,7 +76,7 @@ To evaluate the model we should execute the following scripts. Each script shoul
 python convert_dataset.py -f1 results_single_top -name Garr199905
 ```
 
-2. Next, we proceed to evaluate the model. For example, let's say we want to evaluate the provided trained model on the Garr199905 topology. To do this we execute the followin script were we indicate with the flag '-d' to select the trained model, with the flag '-f1' we indicate the director (it has to be the same like in the previous command!) and with '-f2' we specify the topology.
+2. Next, we proceed to evaluate the model. For example, let's say we want to evaluate the provided trained model on the Garr199905 topology. To do this we execute the followinG script were we indicate with the flag '-d' to select the trained model, with the flag '-f1' we indicate the directory (it has to be the same like in the previous command!) and with '-f2' we specify the topology.
 ```ruby
 python eval_on_single_topology.py -max_edge 100 -min_edge 5 -max_nodes 30 -min_nodes 1 -n 2 -f1 results_single_top -f2 NEW_Garr199905/EVALUATE -d ./Logs/expSP_3top_15_B_NEWLogs.txt
 ```

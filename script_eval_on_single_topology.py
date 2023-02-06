@@ -626,7 +626,7 @@ if __name__ == "__main__":
     for elem in timesteps:
         new_timesteps.append((elem[0], elem[1], time_start_DRL, max_link_uti_DRL_SP))
 
-    print("MAX UTI abans i despres d'optimitzar: ", OSPF_init, max_link_uti_DRL_SP_HILL, tm_id)
+    print("MAX UTI before and after optimization for traffic matrix ID: ", OSPF_init, max_link_uti_DRL_SP_HILL, tm_id)
 
     results[3] = max_link_uti_DRL_SP_HILL 
     results[4] = max_link_uti_sim_annealing

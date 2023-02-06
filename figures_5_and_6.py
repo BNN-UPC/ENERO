@@ -29,7 +29,7 @@ def frange(x, y, jump):
     x += jump
 
 #folders = ["../Enero_datasets/dataset_sing_top/data/results_single_top/evalRes_NEW_Garr199905/EVALUATE/"]
-folders = ["../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_EliBackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_Janetbackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/data/results_my_3_tops_unif_05-1/evalRes_NEW_HurricaneElectric/EVALUATE/"]
+folders = ["../Enero_datasets/dataset_sing_top/evalRes_NEW_EliBackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/evalRes_NEW_Janetbackbone/EVALUATE/","../Enero_datasets/dataset_sing_top/evalRes_NEW_HurricaneElectric/EVALUATE/"]
 
 if __name__ == "__main__":
     # This script is to plot the Figures 5 and 6 from COMNET 2022 paper.
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     plt.rcParams['legend.fontsize'] = 17
     fig, ax = plt.subplots()
     
-    n = np.arange(1,len(cost_ls_top1)+1) / np.float(len(cost_ls_top1))
+    n = np.arange(1,len(cost_ls_top1)+1) / float(len(cost_ls_top1))
     Xs = np.sort(cost_ls_top1)
     ax.step(Xs,n, c='cyan', linestyle=(0, (1,1)), label="LS EliBackbone", linewidth=4) 
     Xs = np.sort(cost_drl_top1)
