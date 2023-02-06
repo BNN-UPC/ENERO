@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     while iters < max_iters:
         processes = []
-        subprocess.call(['python train_Enero_15demands_3top_script.py -i '+str(iters)+ ' -c '+str(counter_store_model)+' -e '+str(episode_iters)+ ' -f1 '+dataset_folder_name1+' -f2 '+dataset_folder_name2+' -f3 '+dataset_folder_name3], shell=True)
+        subprocess.call(['python train_Enero_3top_script.py -i '+str(iters)+ ' -c '+str(counter_store_model)+' -e '+str(episode_iters)+ ' -f1 '+dataset_folder_name1+' -f2 '+dataset_folder_name2+' -f3 '+dataset_folder_name3], shell=True)
 
         usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         counter_store_model = counter_store_model + episode_iters
